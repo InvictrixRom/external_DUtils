@@ -66,7 +66,7 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.WindowManagerGlobal;
-import android.view.WindowManagerPolicyControl;
+//import android.view.WindowManagerPolicyControl;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -154,6 +154,7 @@ public class ActionHandler {
         // we need to make this more reliable when the user tap the partial screenshot button
         // quickly and more times 
         sDisabledActions.add(SYSTEMUI_TASK_REGION_SCREENSHOT);
+        sDisabledActions.add(SYSTEMUI_TASK_EXPANDED_DESKTOP);
     }
 
     static enum SystemAction {
@@ -542,7 +543,7 @@ public class ActionHandler {
             // } else if (action.equals(SYSTEMUI_TASK_AUDIORECORD)) {
             // takeAudiorecord();
         } else if (action.equals(SYSTEMUI_TASK_EXPANDED_DESKTOP)) {
-            toggleExpandedDesktop(context);
+//            toggleExpandedDesktop(context);
             return;
         } else if (action.equals(SYSTEMUI_TASK_SCREENOFF)) {
             screenOff(context);
@@ -785,8 +786,7 @@ public class ActionHandler {
             }
         }
     }
-
-
+/*
     private static void toggleExpandedDesktop(Context context) {
         ContentResolver cr = context.getContentResolver();
         String newVal = "";
@@ -802,7 +802,7 @@ public class ActionHandler {
             WindowManagerPolicyControl.reloadFromSetting(context);
         }
     }
-
+*/
     private static void launchVoiceSearch(Context context) {
         sendCloseSystemWindows("assist");
         // launch the search activity
