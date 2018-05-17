@@ -148,12 +148,10 @@ public class ActionHandler {
     // remove actions from here as they come back on deck
     static final Set<String> sDisabledActions = new HashSet<String>();
     static {
-        sDisabledActions.add(SYSTEMUI_TASK_SCREENRECORD);
         sDisabledActions.add(SYSTEMUI_TASK_ONE_HANDED_MODE_LEFT);
         sDisabledActions.add(SYSTEMUI_TASK_ONE_HANDED_MODE_RIGHT);
         // we need to make this more reliable when the user tap the partial screenshot button
         // quickly and more times 
-        sDisabledActions.add(SYSTEMUI_TASK_REGION_SCREENSHOT);
     }
 
     static enum SystemAction {
@@ -940,7 +938,7 @@ public class ActionHandler {
         }
     }
 
-    private static void killProcess(Context context) {
+    public static void killProcess(Context context) {
         if (context.checkCallingOrSelfPermission(android.Manifest.permission.FORCE_STOP_PACKAGES) == PackageManager.PERMISSION_GRANTED
             && !isLockTaskOn()) {
             try {
