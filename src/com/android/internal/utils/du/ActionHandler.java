@@ -150,8 +150,6 @@ public class ActionHandler {
     static {
         sDisabledActions.add(SYSTEMUI_TASK_ONE_HANDED_MODE_LEFT);
         sDisabledActions.add(SYSTEMUI_TASK_ONE_HANDED_MODE_RIGHT);
-        // we need to make this more reliable when the user tap the partial screenshot button
-        // quickly and more times 
     }
 
     static enum SystemAction {
@@ -308,11 +306,6 @@ public class ActionHandler {
             } else if (TextUtils.equals(action, SYSTEMUI_TASK_CAMERA)
                     && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                 continue;
-            } else if (TextUtils.equals(action, SYSTEMUI_TASK_SCREENRECORD)) {
-                if (!DUActionUtils.getBoolean(context, "config_enableScreenrecordChord",
-                        DUActionUtils.PACKAGE_ANDROID)) {
-                    continue;
-                }
             } else if (TextUtils.equals(action, SYSTEMUI_TASK_EDITING_SMARTBAR)) {
                 // don't allow smartbar editor on Fling
                 if (Settings.Secure.getIntForUser(context.getContentResolver(),
